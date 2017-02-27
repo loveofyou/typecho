@@ -1,0 +1,33 @@
+runtime: php55
+api_version: 1
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /(.*\.(css|js))$
+  static_files: \1
+  upload: .*\.(css|js)$
+  application_readable: true
+
+- url: /usr/(.*\.(ico|jpg|png|gif))$
+  static_files: usr/\1
+  upload: usr/.*\.(ico|jpg|png|gif)$
+  application_readable: true
+
+- url: /(.*\.(ico|jpg|png|gif))$
+  static_files: \1
+  upload: .*\.(ico|jpg|png|gif)$
+
+- url: /admin/(.+)
+  script: admin/\1
+
+- url: /admin/
+  script: admin/index.php
+
+- url: /install.php
+  script: install.php
+
+- url: /(.+)?/?
+  script: index.php
